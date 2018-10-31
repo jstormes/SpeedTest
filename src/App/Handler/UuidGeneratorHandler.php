@@ -17,6 +17,8 @@ class UuidGeneratorHandler implements RequestHandlerInterface
 {
     public function handle(ServerRequestInterface $request) : ResponseInterface
     {
-        return new JsonResponse(['uuid' => uniqid()]);
+        $response = new JsonResponse(['uuid' => uniqid()]);
+
+        return $response->withHeader('Access-Control-Allow-Origin','*');
     }
 }
